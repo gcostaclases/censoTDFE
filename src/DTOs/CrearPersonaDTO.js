@@ -1,11 +1,11 @@
-export default class Persona {
+export default class CrearPersonaDTO {
 	constructor(
 		idUsuario,
 		nombre,
 		departamento,
 		ciudad,
 		fechaNacimiento,
-		ocupacion
+		ocupacion,
 	) {
 		this.idUsuario = idUsuario;
 		this.nombre = nombre;

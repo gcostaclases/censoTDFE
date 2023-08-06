@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
 	listaPersonas: [],
+	listaPersonasFiltradas: [],
 	nombrePersona: "",
 	fNacPersona: new Date().toISOString().split('T')[0],
-	//agregarPersona: null,
 };
 
 export const listadoPersonasSlice = createSlice({
@@ -14,6 +14,9 @@ export const listadoPersonasSlice = createSlice({
 		guardarPersonas: (state, action) => {
 			state.listaPersonas = action.payload;
 		},
+		guardarPersonasFiltradas: (state, action) => {
+			state.listaPersonasFiltradas = action.payload;
+		},
 		guardarNombreP: (state, action) => {
 			state.nombrePersona = action.payload;
 		},
@@ -21,11 +24,11 @@ export const listadoPersonasSlice = createSlice({
 			state.fNacPersona = action.payload;
 		},
 		agregarPersona:(state, action) =>{
-            state.listaTareas.push(action.payload)
+            state.listaPersonas.push(action.payload)
         }
 	},
 });
 
-export const { guardarPersonas, guardarNombreP, guardarfNacP, agregarPersona } =
+export const { guardarPersonas, guardarPersonasFiltradas, guardarNombreP, guardarfNacP, agregarPersona } =
 	listadoPersonasSlice.actions;
 export default listadoPersonasSlice.reducer;

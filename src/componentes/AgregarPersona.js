@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import personaRegistro from "../DTOs/PersonaDTO";
+import crearPersona from "../DTOs/CrearPersonaDTO";
+import personaCensada from "../DTOs/PersonaCensadaDTO";
 import { URLBASE } from "../store/store";
 import { useState } from "react";
-//import {agregarPersona} from "../features/listadoPersonasSlice"
+import {agregarPersona} from "../features/listadoPersonasSlice"
 
 
 const AgregarPersona = () => {
@@ -35,7 +36,7 @@ const AgregarPersona = () => {
     ) {
       setError(true);
     } else {
-      let objPersonaRegistroDTO = new personaRegistro(
+      let objCrearPersonaDTO = new crearPersona(
         idUsu,
         nombrePer,
         depa,
@@ -54,7 +55,7 @@ const AgregarPersona = () => {
           apikey: apikey,
           iduser: idUsuario,
         },
-        body: JSON.stringify(objPersonaRegistroDTO),
+        body: JSON.stringify(objCrearPersonaDTO),
       })
         .then((response) => {
           console.log(response);
@@ -63,10 +64,20 @@ const AgregarPersona = () => {
         .then((personaAgregada) => {
           console.log(personaAgregada);
           let msg = personaAgregada.mensaje;
-		  console.log(msg);
+		      console.log(msg);
+          let objPersonaCensadaDTO = new personaCensada(
+            objCrearPersonaDTO.id = personaAgregada.idCenso,
+            objCrearPersonaDTO.nombre,
+            objCrearPersonaDTO.departamento,
+            objCrearPersonaDTO.ciudad,
+            objCrearPersonaDTO.fechaNacimiento,
+            objCrearPersonaDTO.ocupacion,
+            objCrearPersonaDTO.idUsuario,
+            );
+        
 		  //Antes de hacer el dispatch hay que agregarle el id que 
 		  //devolvió el fetch
-		  //dispatch(agregarPersona(personaAgregada));
+		  dispatch(agregarPersona({...objPersonaCensadaDTO}));
         })
         .catch((error) => {
           console.log(error);
