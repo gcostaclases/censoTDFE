@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { URLBASE } from "../store/store";
-import { guardarOcupaciones } from "../features/ocupacionSlice";
+import { guardarOcupaciones, guardarIdOcupacion } from "../features/ocupacionSlice";
 
 const Ocupaciones = () => {
 	const dispatch = useDispatch();
@@ -36,8 +36,13 @@ const Ocupaciones = () => {
 		}
 	}, []);
 
+	const setearIdOnChange = (evento) => {
+		console.log(evento);
+		dispatch(guardarIdOcupacion(Number(evento.target.value)));
+	};
+
 	return (
-		<select id="slcOcupaciones">
+		<select id="slcOcupaciones" onChange={setearIdOnChange}>
 			{ocu.map((o) => (
 				<option value={o.id} key={o.id}>
 					{o.ocupacion}

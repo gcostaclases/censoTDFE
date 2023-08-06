@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
 	listaPersonas: [],
 	nombrePersona: "",
-	fNacPersona: "",
+	fNacPersona: new Date().toISOString().split('T')[0],
+	//agregarPersona: null,
 };
 
 export const listadoPersonasSlice = createSlice({
@@ -19,9 +20,12 @@ export const listadoPersonasSlice = createSlice({
 		guardarfNacP: (state, action) => {
 			state.fNacPersona = action.payload;
 		},
+		agregarPersona:(state, action) =>{
+            state.listaTareas.push(action.payload)
+        }
 	},
 });
 
-export const { guardarPersonas, guardarNombreP, guardarfNacP } =
+export const { guardarPersonas, guardarNombreP, guardarfNacP, agregarPersona } =
 	listadoPersonasSlice.actions;
 export default listadoPersonasSlice.reducer;

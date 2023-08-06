@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { URLBASE } from "../store/store";
 import {
 	guardarCiudades,
-	guardarCiudadesPorDepa,
+	guardarCiudadesPorDepa, guardarIdCiudad,
 } from "../features/ciudadSlice";
 
 const Ciudades = () => {
@@ -70,6 +70,11 @@ const Ciudades = () => {
 		}
 	}, [idDepart, dispatch]);
 
+	const setearIdCiudadOnChange = (evento) => {
+		console.log(evento);
+		dispatch(guardarIdCiudad(Number(evento.target.value)));
+	};
+
 	console.log(idDepart);
 	const idDepartDisponible = () => {
 		if (idDepart != null) {
@@ -91,7 +96,7 @@ const Ciudades = () => {
 		);
 	} else {
 		return (
-			<select id="slcCiudades">
+			<select id="slcCiudades" onChange={setearIdCiudadOnChange}>
 				{ciudadPorDepa.map((c) => (
 					<option value={c.id} key={c.id}>
 						{c.nombre}

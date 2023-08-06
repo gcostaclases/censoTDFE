@@ -9,7 +9,6 @@ const Registro = () => {
   const [error, setError] = useState(false);
   const [errorP, setErrorP] = useState("");
 
-
   const registrar = () => {
     const userCampo = user.current.value;
     const passCampo = pass.current.value;
@@ -31,14 +30,13 @@ const Registro = () => {
           return response.json();
         })
         .then((usuarioRegistrado) => {
-          console.log(usuarioRegistrado);  		
-			let msgError = usuarioRegistrado.mensaje		
-			setErrorP(msgError)
+          console.log(usuarioRegistrado);
+          let msgError = usuarioRegistrado.mensaje;
+          setErrorP(msgError);
 
           if (usuarioRegistrado.codigo != 200) {
-            //alert(msgError); 
-            setError(true);			
-
+            //alert(msgError);
+            setError(true);
           } else {
             alert("Alta correcta");
             console.log("hola");
