@@ -146,7 +146,7 @@ const ListadoDePersonas = () => {
 
 			<div className="card-body row">
 				<select className="form-select" onChange={filtrarPersonasPorOcupacion}>
-					<option defaultValue selected disabled>
+					<option defaultValue disabled>
 						Filtrar por ocupación
 					</option>
 					<option value="1">Empleado dependiente</option>
