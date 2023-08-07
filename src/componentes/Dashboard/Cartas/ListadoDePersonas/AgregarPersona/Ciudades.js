@@ -19,7 +19,7 @@ const Ciudades = () => {
 		let apikey = localStorage.getItem("apikey");
 		let idUsuario = localStorage.getItem("id");
 
-		if (apikey != null && idDepart !== null) {
+		if (apikey != null && idDepart === 0) {
 			fetch(`${URLBASE}/ciudades.php`, {
 				method: "GET",
 				headers: {
@@ -41,7 +41,7 @@ const Ciudades = () => {
 				})
 				.catch((error) => console.log(error));
 		}
-	}, [dispatch]);
+	}, []);
 
 	useEffect(() => {
 		let apikey = localStorage.getItem("apikey");
@@ -69,23 +69,23 @@ const Ciudades = () => {
 				})
 				.catch((error) => console.log(error));
 		}
-	}, [idDepart, dispatch]);
+	}, [idDepart]);
 
 	const setearIdCiudadOnChange = (evento) => {
 		console.log(evento);
 		dispatch(guardarIdCiudad(Number(evento.target.value)));
 	};
 
-	console.log(idDepart);
-	const idDepartDisponible = () => {
-		if (idDepart != null) {
-			return true;
-		} else {
-			return false;
-		}
-	};
+	//console.log(idDepart);
+	// const idDepartDisponible = () => {
+	// 	if (idDepart !== 0) {
+	// 		return true;
+	// 	} else {
+	// 		return false;
+	// 	}
+	// };
 
-	if (!idDepartDisponible()) {
+	if (idDepart !== 0) {
 		return (
 			<select id="slcCiudades" className="form-select">
 				{ciudad.map((c) => (

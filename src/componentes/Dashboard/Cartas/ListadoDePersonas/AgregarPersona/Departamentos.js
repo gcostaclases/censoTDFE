@@ -51,6 +51,7 @@ const Departamentos = () => {
 			onChange={setearIdOnChange}
 			className="form-select"
 		>
+			<option value="0">Seleccionar Departamento</option>
 			{depart.map((d) => (
 				<option value={d.id} key={d.id}>
 					{d.nombre}
