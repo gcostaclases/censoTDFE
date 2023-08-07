@@ -2,7 +2,9 @@ import { useSelector } from "react-redux";
 import ListaPersonas from "./ListaPersonas";
 
 const Footer = () => {
-	const per = useSelector((state) => state.personas.listaPersonas);
+	const perFiltrada = useSelector(
+		(state) => state.personas.listaPersonasFiltradas
+	);
 
 	return (
 		<div className="card-footer row">
@@ -18,7 +20,7 @@ const Footer = () => {
 					</tr>
 				</thead>
 				<tbody>
-					{per.map((p) => (
+					{perFiltrada.map((p) => (
 						<ListaPersonas key={p.id} {...p} />
 					))}
 				</tbody>

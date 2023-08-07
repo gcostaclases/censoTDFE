@@ -4,6 +4,7 @@ import {
 	guardarPersonasFiltradas,
 } from "../../../../../features/listadoPersonasSlice";
 import Ocupaciones from "../Ocupaciones";
+import { useEffect } from "react";
 
 const SelectOcupaciones = () => {
 	const dispatch = useDispatch();
@@ -12,6 +13,14 @@ const SelectOcupaciones = () => {
 	const per = useSelector((state) => state.personas.listaPersonas);
 	// NOS GUARDAMOS LA LISTA DE OCUPACIONES (QUE ESTA EN EL STORE) EN ESTA CONSTANTE
 	const ocu = useSelector((state) => state.ocupaciones.listaOcupaciones);
+	// NOS GUARDAMOS LA LISTA DE OCUPACIONES (QUE ESTA EN EL STORE) EN ESTA CONSTANTE
+	const perFiltrada = useSelector(
+		(state) => state.personas.listaPersonasFiltradas
+	);
+
+	useEffect(() => {
+		dispatch(guardarPersonasFiltradas(per));
+	}, [per]);
 
 	// FUNCION QUE FILTRA LAS PERSONAS POR OCUPACION Y LAS GUARDA EN EL STORE
 	const filtrarPersonasPorOcupacion = (evento) => {
@@ -28,7 +37,8 @@ const SelectOcupaciones = () => {
 		if (ocupacionSeleccionada !== 0) {
 			dispatch(guardarPersonasFiltradas(listaPerFiltradaPorOcupacion));
 		} else {
-			console.log("no selecciono ocupacion");
+			dispatch(guardarPersonasFiltradas(per));
+			//console.log("no selecciono ocupacion");
 		}
 
 		// if (ocupacionSeleccionada !== 0) {
@@ -44,7 +54,7 @@ const SelectOcupaciones = () => {
 			onChange={filtrarPersonasPorOcupacion}
 			defaultValue="0"
 		>
-			<option value="0">Filtrar por ocupación (Sin filtro)</option>
+			<option value="0">Filtrar por ocupación (Ver todas)</option>
 			{ocu.map((o) => (
 				<Ocupaciones key={o.id} {...o} />
 			))}

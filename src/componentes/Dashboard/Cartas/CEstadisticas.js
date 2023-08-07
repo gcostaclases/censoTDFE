@@ -1,7 +1,7 @@
-import ECensadosRestoDelPais from "../../ECensadosRestoDelPais";
-import ECensadosTotales from "../../ECensadosTotales";
-import EPorcentajeCensados from "../../ECensadosTotales";
-import ETiempoRestante from "../../ETiempoRestante";
+import ECensadosRestoDelPais from "./Estadisticas/ECensadosRestoDelPais";
+import ECensadosTotales from "./Estadisticas/ECensadosTotales";
+import EPorcentajeCensados from "./Estadisticas/EPorcentajeCensados";
+import ETiempoRestante from "./Estadisticas/ETiempoRestante";
 
 const CEstadisticas = () => {
 	return (
