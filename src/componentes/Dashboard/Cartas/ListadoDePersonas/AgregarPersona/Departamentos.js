@@ -1,10 +1,10 @@
-import { useEffect} from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { URLBASE } from "../store/store";
+import { URLBASE } from "../../../../../store/store";
 import {
 	guardarDepartamentos,
 	guardarIdDepartamento,
-} from "../features/departamentoSlice";
+} from "../../../../../features/departamentoSlice";
 
 const Departamentos = () => {
 	const dispatch = useDispatch();
@@ -46,7 +46,11 @@ const Departamentos = () => {
 	};
 
 	return (
-		<select id="slcDepartamentos" onChange={setearIdOnChange}>
+		<select
+			id="slcDepartamentos"
+			onChange={setearIdOnChange}
+			className="form-select"
+		>
 			{depart.map((d) => (
 				<option value={d.id} key={d.id}>
 					{d.nombre}

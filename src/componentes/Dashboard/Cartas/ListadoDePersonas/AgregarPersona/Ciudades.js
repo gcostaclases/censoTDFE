@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { URLBASE } from "../store/store";
+import { URLBASE } from "../../../../../store/store";
 import {
 	guardarCiudades,
-	guardarCiudadesPorDepa, guardarIdCiudad,
-} from "../features/ciudadSlice";
+	guardarCiudadesPorDepa,
+	guardarIdCiudad,
+} from "../../../../../features/ciudadSlice";
 
 const Ciudades = () => {
 	const dispatch = useDispatch();
@@ -86,7 +87,7 @@ const Ciudades = () => {
 
 	if (!idDepartDisponible()) {
 		return (
-			<select id="slcCiudades">
+			<select id="slcCiudades" className="form-select">
 				{ciudad.map((c) => (
 					<option value={c.id} key={c.id}>
 						{c.nombre}
@@ -95,8 +96,13 @@ const Ciudades = () => {
 			</select>
 		);
 	} else {
+		// esta devolviendo solo este
 		return (
-			<select id="slcCiudades" onChange={setearIdCiudadOnChange}>
+			<select
+				id="slcCiudades"
+				onChange={setearIdCiudadOnChange}
+				className="form-select"
+			>
 				{ciudadPorDepa.map((c) => (
 					<option value={c.id} key={c.id}>
 						{c.nombre}

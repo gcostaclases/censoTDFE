@@ -7,9 +7,6 @@ const Dashboard = () => {
 	let navigate = useNavigate();
 
 	useEffect(() => {
-		// let apikey = localStorage.getItem("apikey");
-		// let idUsuario = localStorage.getItem("id");
-
 		if (localStorage.getItem("apikey") === null) {
 			navigate("/");
 		}
