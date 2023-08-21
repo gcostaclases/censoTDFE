@@ -1,9 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { URLBASE } from "../store/store";
-import { guardarOcupaciones, guardarIdOcupacion } from "../features/ocupacionSlice";
+import { URLBASE } from "../../../../../store/store";
+import {
+	guardarOcupaciones,
+	guardarIdOcupacion,
+} from "../../../../../features/ocupacionSlice";
+import Ocupaciones from "../Ocupaciones";
 
-const Ocupaciones = () => {
+const SelectOcupaciones = () => {
 	const dispatch = useDispatch();
 
 	const ocu = useSelector((state) => state.ocupaciones.listaOcupaciones);
@@ -42,14 +46,20 @@ const Ocupaciones = () => {
 	};
 
 	return (
-		<select id="slcOcupaciones" onChange={setearIdOnChange}>
+		<select
+			id="slcOcupaciones"
+			onChange={setearIdOnChange}
+			className="form-select"
+			defaultValue="0"
+		>
+			<option value="0" disabled>
+				Seleccionar Ocupacción
+			</option>
 			{ocu.map((o) => (
-				<option value={o.id} key={o.id}>
-					{o.ocupacion}
-				</option>
+				<Ocupaciones key={o.id} {...o} />
 			))}
 		</select>
 	);
 };
 
-export default Ocupaciones;
+export default SelectOcupaciones;

@@ -67,7 +67,8 @@ const Login = () => {
 	return (
 		<section
 			className="row text-center justify-content-center align-items-center"
-			id="pantalla-login">
+			id="pantalla-login"
+		>
 			<h1 className="col-12">Login</h1>
 			<div className="col-6">
 				<div className="mb-3">
@@ -105,6 +106,12 @@ const Login = () => {
 				/>
 			</div>
 			{error && <p>{errorP}</p>}
+
+			<p id="datosParaLoguearse">
+				Datos para loguearse: <br />
+				user: lolam <br />
+				pass: lola1234
+			</p>
 		</section>
 	);
 };

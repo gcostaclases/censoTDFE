@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
 	listaOcupaciones: [],
 	idOcupacion: 0,
-
 };
 
 export const ocupacionSlice = createSlice({
@@ -19,5 +18,6 @@ export const ocupacionSlice = createSlice({
 	},
 });
 
-export const { guardarOcupaciones, guardarIdOcupacion } = ocupacionSlice.actions;
+export const { guardarOcupaciones, guardarIdOcupacion } =
+	ocupacionSlice.actions;
 export default ocupacionSlice.reducer;

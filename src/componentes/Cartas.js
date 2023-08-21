@@ -1,8 +1,7 @@
-import CEstadisticas from "./CEstadisticas";
-import CGraficoPersonasPorDepartamento from "./CGraficoPersonasPorDepartamento";
-import CGraficoPorOcupacion from "./CGraficoPorOcupacion";
-import CListadoDePersonas from "./CListadoDePersonas";
-import CMapaUsuarioPorDepartamento from "./CMapaUsuarioPorDepartamento";
+import CEstadisticas from "./Dashboard/Cartas/CEstadisticas";
+import CGraficoPersonasPorDepartamento from "./Dashboard/Cartas/CGraficoPersonasPorDepartamento";
+import CListadoDePersonas from "./Dashboard/Cartas/CListadoDePersonas";
+import CGraficoOcupacionYMapaUsuarioPorDepa from "./Dashboard/Cartas/CGraficoOcupacionYMapaUsuarioPorDepa";
 
 const Cartas = () => {
 	return (
@@ -10,12 +9,7 @@ const Cartas = () => {
 			<CListadoDePersonas />
 			<CGraficoPersonasPorDepartamento />
 			<CEstadisticas />
-			<article className="col-10">
-				<div className="row justify-content-between">
-					<CGraficoPorOcupacion />
-					<CMapaUsuarioPorDepartamento />
-				</div>
-			</article>
+			<CGraficoOcupacionYMapaUsuarioPorDepa />
 		</section>
 	);
 };
