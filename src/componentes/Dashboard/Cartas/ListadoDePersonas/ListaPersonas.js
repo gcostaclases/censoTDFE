@@ -2,6 +2,7 @@ import { URLBASE } from "../../../../store/store";
 import { useDispatch, useSelector } from "react-redux";
 
 import { eliminarPersona } from "../../../../features/listadoPersonasSlice";
+import { useEffect } from "react";
 
 const ListaPersonas = ({
 	id,
@@ -13,7 +14,12 @@ const ListaPersonas = ({
 }) => {
 	const dispatch = useDispatch();
 
-	const eliminarPersona = (idPersona) => {
+	const per = useSelector((state) => state.personas.listaPersonas);
+
+	const eliminarPer = (evento) => {
+		let idPersona = evento.target.id;
+		//console.log(`Id de la persona: ${idPersona}`);
+
 		let apikey = localStorage.getItem("apikey");
 		let idUsuario = localStorage.getItem("id");
 
@@ -32,7 +38,8 @@ const ListaPersonas = ({
 				.then((personaBorrada) => {
 					console.log(personaBorrada);
 					let msg = personaBorrada.mensaje;
-					alert(msg);
+					console.log(msg);
+					dispatch(eliminarPersona(per.indexOf(idPersona)));
 				})
 				.catch((error) => {
 					console.log(error);
@@ -49,10 +56,11 @@ const ListaPersonas = ({
 			<td>{ocupacion}</td>
 			<td>
 				<input
+					id={id}
 					type="button"
 					className="btn btn-danger"
 					value="Eliminar"
-					onClick={eliminarPersona(id)}
+					onClick={eliminarPer}
 				/>
 			</td>
 		</tr>

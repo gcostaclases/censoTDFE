@@ -8,7 +8,7 @@ import {
 
 const Ciudades = () => {
 	const dispatch = useDispatch();
-	//const ciudad = useSelector((state) => state.ciudades.listaCiudades);
+
 	const ciudadPorDepa = useSelector(
 		(state) => state.ciudades.listaCiudadesPorDepa
 	);
@@ -29,30 +29,49 @@ const Ciudades = () => {
 			})
 				.then((response) => response.json())
 				.then((datosCiudadesPorDepa) => {
-					console.log(datosCiudadesPorDepa);
+					console.log(
+						`Respuesta completa fetch: ${JSON.stringify(datosCiudadesPorDepa)}`
+					);
 
 					if (datosCiudadesPorDepa.codigo != 200) {
-						//alert(datosDepartamentos.mensaje);
 						console.log(datosCiudadesPorDepa.mensaje);
 					} else {
+						// console.log(
+						// 	`Respuesta ciudades fetch: ${JSON.stringify(
+						// 		datosCiudadesPorDepa.ciudades
+						// 	)}`
+						// );
 						dispatch(guardarCiudadesPorDepa(datosCiudadesPorDepa.ciudades));
 					}
 				})
 				.catch((error) => console.log(error));
 		}
+		//console.log(`Id de ciudades: ${JSON.stringify(ciudadPorDepa.id)}`);
 	}, [idDepart]);
 
 	const setearIdCiudadOnChange = (evento) => {
-		console.log(evento);
+		// ciudadPorDepa.forEach((ciudad) => {
+		//console.log(`ID de Ciudad: ${ciudad.id}, Nombre Ciudad: ${ciudad.nombre}`);
+		// if (ciudad.id === Number(evento.target.value)) {
 		dispatch(guardarIdCiudad(Number(evento.target.value)));
+		// }
+		// });
 	};
+
+	// ciudadPorDepa.forEach((ciudad) => {
+	// 	console.log(`ID de Ciudad: ${ciudad.id}, Nombre Ciudad: ${ciudad.nombre}`);
+	// });
 
 	return (
 		<select
 			id="slcCiudades"
 			onChange={setearIdCiudadOnChange}
 			className="form-select"
+			defaultValue={0}
 		>
+			<option value="0" disabled>
+				Seleccionar Ciudad
+			</option>
 			{ciudadPorDepa.map((c) => (
 				<option value={c.id} key={c.id}>
 					{c.nombre}

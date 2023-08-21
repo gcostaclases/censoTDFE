@@ -41,37 +41,6 @@ const EPorcentajeCensados = () => {
 		}
 	}, []);
 
-	// const censadosTotales = () => {
-	// 	let apikey = localStorage.getItem("apikey");
-	// 	let idUsuario = localStorage.getItem("id");
-
-	// 	if (apikey != null) {
-	// 		fetch(`${URLBASE}/totalCensados.php`, {
-	// 			method: "GET",
-	// 			headers: {
-	// 				"Content-Type": "application/json",
-	// 				apikey: apikey,
-	// 				iduser: idUsuario,
-	// 			},
-	// 		})
-	// 			.then((response) => {
-	// 				return response.json();
-	// 			})
-	// 			.then((dataTotalCensados) => {
-	// 				console.log(dataTotalCensados);
-
-	// 				if (dataTotalCensados.codigo != 200) {
-	// 					console.log(dataTotalCensados.mensaje);
-	// 				} else {
-	// 					dispatch(guardarTotalCensados(dataTotalCensados.total));
-	// 				}
-	// 			})
-	// 			.catch((error) => {
-	// 				console.log(error);
-	// 			});
-	// 	}
-	// };
-
 	//console.log(`Censados Totales: ${censadosTot}`);
 	let cuenta = (cantPer * 100) / censadosTot;
 	//console.log(`Censados redond: ${cuenta.toFixed(2)}`);

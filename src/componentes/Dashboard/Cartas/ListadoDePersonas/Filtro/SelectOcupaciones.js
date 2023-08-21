@@ -1,8 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-	guardarPersonas,
-	guardarPersonasFiltradas,
-} from "../../../../../features/listadoPersonasSlice";
+import { guardarPersonasFiltradas } from "../../../../../features/listadoPersonasSlice";
 import Ocupaciones from "../Ocupaciones";
 import { useEffect } from "react";
 
@@ -13,10 +10,6 @@ const SelectOcupaciones = () => {
 	const per = useSelector((state) => state.personas.listaPersonas);
 	// NOS GUARDAMOS LA LISTA DE OCUPACIONES (QUE ESTA EN EL STORE) EN ESTA CONSTANTE
 	const ocu = useSelector((state) => state.ocupaciones.listaOcupaciones);
-	// NOS GUARDAMOS LA LISTA DE OCUPACIONES (QUE ESTA EN EL STORE) EN ESTA CONSTANTE
-	const perFiltrada = useSelector(
-		(state) => state.personas.listaPersonasFiltradas
-	);
 
 	useEffect(() => {
 		dispatch(guardarPersonasFiltradas(per));

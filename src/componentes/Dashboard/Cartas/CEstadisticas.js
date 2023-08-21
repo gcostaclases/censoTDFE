@@ -1,3 +1,4 @@
+import ECensadosEnMontevideo from "./Estadisticas/ECensadosEnMontevideo";
 import ECensadosRestoDelPais from "./Estadisticas/ECensadosRestoDelPais";
 import ECensadosTotales from "./Estadisticas/ECensadosTotales";
 import EPorcentajeCensados from "./Estadisticas/EPorcentajeCensados";
@@ -9,6 +10,7 @@ const CEstadisticas = () => {
 			<div className="row justify-content-between">
 				<ECensadosTotales />
 				<EPorcentajeCensados />
+				<ECensadosEnMontevideo />
 				<ECensadosRestoDelPais />
 				<ETiempoRestante />
 			</div>

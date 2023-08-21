@@ -11,11 +11,6 @@ import Footer from "./ListadoDePersonas/Footer";
 const ListadoDePersonas = () => {
 	const dispatch = useDispatch();
 
-	//const per = useSelector((state) => state.personas.listaPersonas);
-	// const perFiltradaPorOcupacion = useSelector(
-	// 	(state) => state.personas.listaPersonasFiltradas
-	// );
-
 	useEffect(() => {
 		let apikey = localStorage.getItem("apikey");
 		let idUsuario = localStorage.getItem("id");

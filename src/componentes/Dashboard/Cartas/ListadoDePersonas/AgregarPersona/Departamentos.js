@@ -5,12 +5,16 @@ import {
 	guardarDepartamentos,
 	guardarIdDepartamento,
 } from "../../../../../features/departamentoSlice";
+import { guardarIdCiudad } from "../../../../../features/ciudadSlice";
 
 const Departamentos = () => {
 	const dispatch = useDispatch();
 
 	const depart = useSelector((state) => state.departamentos.listaDepartamentos);
-	//const idDepart = useSelector((state) => state.departamentos.idDepartamento);
+	const idDepart = useSelector((state) => state.departamentos.idDepartamento);
+	const ciudadPorDepa = useSelector(
+		(state) => state.ciudades.listaCiudadesPorDepa
+	);
 
 	useEffect(() => {
 		let apikey = localStorage.getItem("apikey");
@@ -30,7 +34,6 @@ const Departamentos = () => {
 					console.log(datosDepartamentos);
 
 					if (datosDepartamentos.codigo != 200) {
-						//alert(datosDepartamentos.mensaje);
 						console.log(datosDepartamentos.mensaje);
 					} else {
 						dispatch(guardarDepartamentos(datosDepartamentos.departamentos));
@@ -41,7 +44,7 @@ const Departamentos = () => {
 	}, []);
 
 	const setearIdOnChange = (evento) => {
-		console.log(evento);
+		//console.log(evento);
 		dispatch(guardarIdDepartamento(Number(evento.target.value)));
 	};
 
@@ -50,8 +53,11 @@ const Departamentos = () => {
 			id="slcDepartamentos"
 			onChange={setearIdOnChange}
 			className="form-select"
+			defaultValue={0}
 		>
-			<option value="0">Seleccionar Departamento</option>
+			<option value="0" disabled>
+				Seleccionar Departamento
+			</option>
 			{depart.map((d) => (
 				<option value={d.id} key={d.id}>
 					{d.nombre}

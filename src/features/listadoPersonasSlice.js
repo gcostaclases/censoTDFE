@@ -28,7 +28,7 @@ export const listadoPersonasSlice = createSlice({
 			state.listaPersonas.push(action.payload);
 		},
 		eliminarPersona: (state, action) => {
-			state.listaPersonas.splice(action.payload);
+			state.listaPersonas.splice(action.payload, 1);
 		},
 		guardarTotalCensados: (state, action) => {
 			state.totalCensados = action.payload;
